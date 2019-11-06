@@ -6,7 +6,7 @@ class NoticeData(title:String, content:String, writeDate:String) {
     var content=content
     var date=writeDate
 
-    
+
 
 
 }
