@@ -38,7 +38,7 @@ class NoticeAdapter (context:Context, resource:Int, list:ArrayList<NoticeData>)
         var dateTxt =row.findViewById<TextView>(R.id.dateTxt)
         var contentTxt =row.findViewById<TextView>(R.id.contentTxt)
 
-        
+
         titleTxt.text=data.title
         dateTxt.text=data.date
         contentTxt.text=data.content
