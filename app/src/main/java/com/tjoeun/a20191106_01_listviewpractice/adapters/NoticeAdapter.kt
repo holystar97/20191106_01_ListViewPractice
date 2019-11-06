@@ -11,11 +11,9 @@ import com.tjoeun.a20191106_01_listviewpractice.datas.NoticeData
 
 class NoticeAdapter (context:Context, resource:Int, list:ArrayList<NoticeData>)
     : ArrayAdapter<NoticeData> (context, R.layout.notice_list_item, list){
-
     var mContext =context
     var mList=list
     var inf=LayoutInflater.from(mContext)
-
 
     constructor(context:Context,list:ArrayList<NoticeData>):this(context,R.layout.notice_list_item,list)
 
@@ -42,9 +40,6 @@ class NoticeAdapter (context:Context, resource:Int, list:ArrayList<NoticeData>)
         titleTxt.text=data.title
         dateTxt.text=data.date
         contentTxt.text=data.content
-
-
-
         return row
 
     }

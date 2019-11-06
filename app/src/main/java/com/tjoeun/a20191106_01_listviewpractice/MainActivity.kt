@@ -9,42 +9,37 @@ import com.tjoeun.a20191106_01_listviewpractice.datas.NoticeData
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     var noticeList =ArrayList<NoticeData>()
     var noticeAdapter:NoticeAdapter? =null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         addNotices()
 
         noticeAdapter=NoticeAdapter(this,noticeList)
         noticeListView.adapter=noticeAdapter
 
+        addNoticeBtn.setOnClickListener {
+            noticeList.add(NoticeData("새 공지사항","내용도 적어봅니다./","2019-11-06"))
 
-        noticeListView.setOnItemClickListener { parent, view, position, id ->
+            noticeAdapter?.notifyDataSetChanged()
 
-//            Toast.makeText(this,"${position}번째 줄 클릭", Toast.LENGTH_SHORT).show()
-
-
-            var noticeData = noticeList.get(position)
-
-            var intent=Intent(this,NoticeDetailActivity::class.java)
-
-            intent.putExtra("notice",noticeData)
-
-            startActivity(intent)
+            
+            noticeListView.smoothScrollToPosition(noticeList.size-1)
 
 
         }
 
+        noticeListView.setOnItemClickListener { parent, view, position, id ->
+//            Toast.makeText(this,"${position}번째 줄 클릭", Toast.LENGTH_SHORT).show()
+            var noticeData = noticeList.get(position)
+            var intent=Intent(this,NoticeDetailActivity::class.java)
+            intent.putExtra("notice",noticeData)
+            startActivity(intent)
 
+        }
         noticeListView.setOnItemLongClickListener { parent, view, position, id ->
-
             Toast.makeText(this,"${position}번째 줄 길게 클릭", Toast.LENGTH_SHORT).show()
-
             return@setOnItemLongClickListener true
         }
 
